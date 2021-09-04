@@ -1,0 +1,9 @@
+BLOOD DONOR APP - USE CASES
+
+- Login user (come admin o operatore classico)
+- Gestione "Donator" (as operator)
+- Gestione "Donation" (as operator)
+- Gestione "Analysis" (as operator)
+- Stampa scheda donatore con tutte le analisi e le donazioni
+- Invio mail promemoria esami / donazione
+- Invio mail richiamo donatore (in casi di urgenze)
