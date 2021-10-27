@@ -3,10 +3,10 @@ from gnr.core.gnrdecorator import metadata
 
 class Table(object):
     def config_db(self, pkg):
-        tbl =  pkg.table('donator_blood_group',pkey='code',name_long='Blood group',name_plural='Blood groups',caption_field='code',lookup=True)
+        tbl =  pkg.table('donator_blood_group',pkey='code',name_long='!![en]Blood group',name_plural='!![en]Blood groups',caption_field='code',lookup=True)
         self.sysFields(tbl,id=False)
-        tbl.column('code',size=':3',name_long='Code')
-        tbl.column('description',name_long='Description')
+        tbl.column('code',size=':3',name_long='!![en]Code')
+        tbl.column('description',name_long='!![en]Description')
 
     @metadata(mandatory=True)
     def sysRecord_APositive(self):

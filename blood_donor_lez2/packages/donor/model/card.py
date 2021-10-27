@@ -4,23 +4,23 @@ import names
 
 class Table(object):
     def config_db(self,pkg):
-        tbl=pkg.table('card', pkey='id', name_long='Card', name_plural='Cards', caption_field='full_name')
+        tbl=pkg.table('card', pkey='id', name_long='!![en]Card', name_plural='!![en]Cards', caption_field='full_name')
         self.sysFields(tbl)
         
-        tbl.column('name',name_long='Name')
-        tbl.column('surname',name_long='Surname')
-        tbl.column('birthplace_id',size='22',name_long='Birthplace').relation(
+        tbl.column('name',name_long='!![en]Name')
+        tbl.column('surname',name_long='!![en]Surname')
+        tbl.column('birthplace_id',size='22',name_long='!![en]Birthplace').relation(
                     'glbl.comune.id',relation_name='donators_by_birthplace', mode='foreignkey', onDelete='raise')
-        tbl.column('gender',name_long='Gender', values='M:Male,F:Female')
-        tbl.column('birthdate',dtype='D',name_long='Birthdate')
-        tbl.column('telephone',name_long='Telephone')
-        tbl.column('email',name_long='E-mail')
-        tbl.column('address',name_long='Address')
-        tbl.column('city_id',size='22',name_long='City').relation(
+        tbl.column('gender',name_long='!![en]Gender', values='M:Male,F:Female')
+        tbl.column('birthdate',dtype='D',name_long='!![en]Birthdate')
+        tbl.column('telephone',name_long='!![en]Telephone')
+        tbl.column('email',name_long='!![en]E-mail')
+        tbl.column('address',name_long='!![en]Address')
+        tbl.column('city_id',size='22',name_long='!![en]City').relation(
                     'glbl.comune.id',relation_name='donators_by_city', mode='foreignkey', onDelete='raise')
-        tbl.column('fiscal_code',size='16',name_long='Fiscal code')
+        tbl.column('fiscal_code',size='16',name_long='!![en]Fiscal code')
 
-        tbl.formulaColumn('fullname', "$surname ||' '||$name", name_long='Fullname')
+        tbl.formulaColumn('fullname', "$surname ||' '||$name", name_long='!![en]Fullname')
 
     def randomValues(self):
         return dict(name=dict(default_value='batch_#P'), fiscal_code=False,

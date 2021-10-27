@@ -3,14 +3,14 @@
 
 class Table(object):
     def config_db(self, pkg):
-        tbl =  pkg.table('analysis',pkey='id',name_long='Analysis',name_plural='Analysis',caption_field='reference_num')
+        tbl =  pkg.table('analysis',pkey='id',name_long='!![en]Analysis',name_plural='!![en]Analysis',caption_field='reference_num')
         self.sysFields(tbl)
-        tbl.column('reference_num',name_long='Reference number')
-        tbl.column('donator_id',size='22',name_long='Donator').relation('donator.id',relation_name='analysis', mode='foreignkey', onDelete='raise')
-        tbl.column('analysis_type_id',size='22',name_long='Analysis type').relation('analysis_type.id',relation_name='analysis', mode='foreignkey', onDelete='raise')
-        tbl.column('date',dtype='D',name_long='Date')
-        tbl.column('next_check',dtype='D',name_long='Next check')
-        tbl.column('notes',name_long='Notes')
+        tbl.column('reference_num',name_long='!![en]Reference number')
+        tbl.column('donator_id',size='22',name_long='!![en]Donator').relation('donator.id',relation_name='analysis', mode='foreignkey', onDelete='raise')
+        tbl.column('analysis_type_id',size='22',name_long='!![en]Analysis type').relation('analysis_type.id',relation_name='analysis', mode='foreignkey', onDelete='raise')
+        tbl.column('date',dtype='D',name_long='!![en]Date')
+        tbl.column('next_check',dtype='D',name_long='!![en]Next check')
+        tbl.column('notes',name_long='!![en]Notes')
 
     def defaultValues(self):
         return dict(date = self.db.workdate)
