@@ -4,7 +4,7 @@ import names
 
 class Table(object):
     def config_db(self,pkg):
-        tbl=pkg.table('card', pkey='id', name_long='!![en]Card', name_plural='!![en]Cards', caption_field='full_name')
+        tbl=pkg.table('card', pkey='id', name_long='!![en]Card', name_plural='!![en]Cards', caption_field='fullname')
         self.sysFields(tbl)
         
         tbl.column('name',name_long='!![en]Name')
