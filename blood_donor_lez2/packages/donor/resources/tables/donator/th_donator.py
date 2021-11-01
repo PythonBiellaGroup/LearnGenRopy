@@ -9,7 +9,7 @@ class View(BaseComponent):
     def th_struct(self,struct):
         r = struct.view().rows()
         r.fieldcell('fullname')
-        r.fieldcell('@card_id.birthplace_id')
+        r.fieldcell('@card_id.@birthplace_id.denominazione', name='Birthplace')
         r.fieldcell('@card_id.gender')
         r.fieldcell('@card_id.birthdate')
         r.fieldcell('@card_id.telephone')
@@ -18,7 +18,7 @@ class View(BaseComponent):
         r.fieldcell('journal_request', semaphore=True)
         r.fieldcell('news_request', semaphore=True)
         r.fieldcell('@card_id.address')
-        r.fieldcell('@card_id.city_id')
+        r.fieldcell('@card_id.@city_id.denominazione', name='City')
         r.fieldcell('@card_id.fiscal_code')
         r.fieldcell('blood_group_code', width='8em')
         r.fieldcell('department_id')
