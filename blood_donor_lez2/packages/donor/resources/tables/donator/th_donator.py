@@ -41,7 +41,7 @@ class Form(BaseComponent):
     def th_form(self, form):
         bc = form.center.borderContainer()
         top = bc.borderContainer(region='top', height='50%', datapath='.record')
-        card_fb = top.roundedGroupFrame(region='left', width='50%', title='Donor Card', datapath='.@anagrafica_id').formbuilder(
+        card_fb = top.roundedGroupFrame(region='left', width='50%', title='Donor Card', datapath='.@card_id').formbuilder(
                                         cols=2, border_spacing='4px')
         card_fb.textbox('^.name', lbl='!![en]Name')
         card_fb.textbox('^.surname', lbl='!![en]Surname')
