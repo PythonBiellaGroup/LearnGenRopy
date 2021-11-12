@@ -25,7 +25,6 @@ class Table(object):
         return dict(date = dict(sorted=True))
 
     def trigger_onInserting(self, record):
-        print(x)
         if record.get('matricola'):
             donator_number = record.get('matricola')
             donator_id = self.db.table('donor.donator').readColumns(where='$registration_num=:rn', 
