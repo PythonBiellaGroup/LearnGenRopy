@@ -33,7 +33,7 @@ class View(BaseComponent):
 
 
 class Form(BaseComponent):
-    py_requires='card_form:CardForm'
+    py_requires='card_form:CardForm,gnrcomponents/attachmanager/attachmanager:AttachManager'
 
     def th_form(self, form):
         bc = form.center.borderContainer()
@@ -54,6 +54,10 @@ class Form(BaseComponent):
         tc = bc.tabContainer(region='center')
         tc.contentPane(title='Donations').inlineTableHandler(relation='@donations', viewResource='ViewEdit')
         tc.contentPane(title='Analysis').dialogTableHandler(relation='@analysis', formResource='FormFromDonator')
+        self.donatorAttachments(tc.contentPane(title='Attachments'))
+
+    def donatorAttachments(self, pane):
+        pane.attachmentMultiButtonFrame()
 
     def th_options(self):
         return dict(dialog_height='400px', dialog_width='600px' )
