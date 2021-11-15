@@ -3,10 +3,11 @@
 
 def config(root,application=None):
     donor = root.branch('Blood Donor')
-    donor.thpage('Analysis',table='donor.analysis')
-    donor.thpage('Cards',table='donor.card')
-    donor.thpage('Donators',table='donor.donator')
-    donor.thpage('Donations',table='donor.donation')
-    donor.thpage('Departments',table='donor.department')
-    donor.thpage('Staff',table='donor.staff')
-    donor.lookups('Lookup tables',lookup_manager='donor')
+    donor.thpage('!![en]Analysis',table='donor.analysis')
+    donor.thpage('!![en]Analysis type',table='donor.analysis_type')
+    donor.thpage('!![en]Cards',table='donor.card')
+    donor.thpage('!![en]Donators',table='donor.donator')
+    donor.thpage('!![en]Donations',table='donor.donation')
+    donor.thpage('!![en]Departments',table='donor.department')
+    donor.thpage('!![en]Staff',table='donor.staff')
+    donor.lookups('!![en]Lookup tables',lookup_manager='donor')

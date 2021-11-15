@@ -37,7 +37,7 @@ class Form(BaseComponent):
 
 
     def th_options(self):
-        return dict(dialog_height='400px', dialog_width='600px', hierarchical=True )
+        return dict(dialog_height='400px', dialog_width='600px')
 
 #Definizione di una classe Form alternativa utilizzata in th_donator
 class FormFromDonator(BaseComponent):
