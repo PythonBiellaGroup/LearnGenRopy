@@ -8,29 +8,45 @@ class View(BaseComponent):
 
     def th_struct(self,struct):
         r = struct.view().rows()
+        r.fieldcell('registration_num',width='6em')
         r.fieldcell('fullname')
         r.fieldcell('@card_id.@birthplace_id.denominazione', name='Birthplace')
         r.fieldcell('@card_id.gender', width='6em')
-        r.fieldcell('@card_id.birthdate')
+        r.fieldcell('@card_id.birthdate',width='8em')
         r.fieldcell('@card_id.email', width='18em')
         r.fieldcell('journal_request', semaphore=True, width='6em')
         r.fieldcell('news_request', semaphore=True, width='6em')
         r.fieldcell('@card_id.@city_id.denominazione', name='City')
         r.fieldcell('blood_group_code', width='8em')
-        r.fieldcell('department_id')
-        r.fieldcell('first_donation_date')
-        r.fieldcell('last_donation_date')
+        r.fieldcell('department_id',width='8em')
+        r.fieldcell('first_donation_date',width='8em')
+        r.fieldcell('last_donation_date',width='8em')
         r.fieldcell('is_active', semaphore=True)
-        r.fieldcell('donations_number')
+        r.fieldcell('donations_number',width='8em')
         r.fieldcell('notes')
 
     def th_order(self):
         return 'fullname'
 
-    def th_query(self):
-        return dict(column='fullname', op='contains', val='')
+    #def th_query(self):
+    #    return dict(column='fullname', op='contains', val='')
 
+    def th_queryBySample(self):
+        return dict(fields=[dict(field='fullname', lbl='!![en]Name/Surname', width='15em'),
+                            dict(field='id', lbl='!![en]Reg.num.', tag='dbSelect', 
+                                    table='donor.donator', columns='$registration_num,$fullname', 
+                                    auxColumns='$registration_num,$fullname'),
+                            dict(field='department_id', lbl='!![en]Department', hasDownArrow=True)
+                            ], cols=3, isDefault=True)
 
+    def th_sections_active_donators(self):
+        return [dict(code='all',caption='All'),
+                dict(code='active',caption='Only active',condition='$is_active IS TRUE')]
+
+    def th_top_toolbar(self,top):
+        top.slotToolbar('5,sections@active_donators,*,sections@blood_group_code,5',
+                            childname='superiore',_position='<bar')
+                
 
 class Form(BaseComponent):
     py_requires='card_form:CardForm,gnrcomponents/attachmanager/attachmanager:AttachManager'

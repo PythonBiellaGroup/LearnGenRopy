@@ -28,3 +28,4 @@ class Table(object):
             donator_id = self.db.table('donor.donator').readColumns(where='$registration_num=:rn', 
                                                                     rn=donator_number, columns='$id')
             record['donator_id'] = donator_id
+            #In alternativa è possibile definire un hook def importer_ per avere più controllo sul processo di importazione
