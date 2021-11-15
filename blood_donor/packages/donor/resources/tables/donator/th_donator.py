@@ -18,7 +18,6 @@ class View(BaseComponent):
         r.fieldcell('news_request', semaphore=True, width='6em')
         r.fieldcell('@card_id.@city_id.denominazione', name='City')
         r.fieldcell('blood_group_code', width='8em')
-        r.fieldcell('department_id',width='8em')
         r.fieldcell('first_donation_date',width='8em')
         r.fieldcell('last_donation_date',width='8em')
         r.fieldcell('is_active', semaphore=True)

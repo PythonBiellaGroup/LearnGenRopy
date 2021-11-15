@@ -13,6 +13,9 @@ class Table(object):
         tbl.column('city_id',size='22',name_long='!![en]City').relation('glbl.comune.id',relation_name='departments', mode='foreignkey', onDelete='raise')
         tbl.column('notes',name_long='!![en]Notes')
 
-    def partitionioning_pkeys(self):
-        return [r['id'] for r in self.query(excludeLogicalDeleted=False).fetch()]
+    def partitioning_pkeys(self):
+        if self.db.currentEnv.get('current_department_id'):
+            return [self.db.currentEnv['current_department_id']]
+        else:
+            return [r['id'] for r in self.query().fetch()]
         #Prendiamo gli id di tutti i dipartimenti per fare il partizionamento

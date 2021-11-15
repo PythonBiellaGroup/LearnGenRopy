@@ -4,7 +4,7 @@ class Table(object):
     def config_db(self,pkg):
         tbl =  pkg.table('donation',pkey='id',name_long='!![en]Donation',
                                     name_plural='!![en]Donations',caption_field='reference_num',
-                                    partition_per_dep='department_id')
+                                    partition_department_id='department_id')
         self.sysFields(tbl)
         tbl.column('reference_num',name_long='!![en]Reference number')
         tbl.column('donator_id',size='22',name_long='!![en]Donator').relation(
