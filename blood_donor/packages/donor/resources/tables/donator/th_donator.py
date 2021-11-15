@@ -46,7 +46,9 @@ class View(BaseComponent):
     def th_top_toolbar(self,top):
         top.slotToolbar('5,sections@active_donators,*,sections@blood_group_code,5',
                             childname='superiore',_position='<bar')
-                
+
+    def th_options(self):
+        return dict(partitioned=True)    
 
 class Form(BaseComponent):
     py_requires='card_form:CardForm,gnrcomponents/attachmanager/attachmanager:AttachManager'

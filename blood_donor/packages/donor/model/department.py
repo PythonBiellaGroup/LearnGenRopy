@@ -12,3 +12,7 @@ class Table(object):
         tbl.column('email',name_long='!![en]E-mail')
         tbl.column('city_id',size='22',name_long='!![en]City').relation('glbl.comune.id',relation_name='departments', mode='foreignkey', onDelete='raise')
         tbl.column('notes',name_long='!![en]Notes')
+
+    def partitionioning_pkeys(self):
+        return [r['id'] for r in self.query(excludeLogicalDeleted=False).fetch()]
+        #Prendiamo gli id di tutti i dipartimenti per fare il partizionamento

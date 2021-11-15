@@ -34,6 +34,9 @@ class View(BaseComponent):
         return [dict(code='all',caption='All'),
                 dict(code='completed',caption='Completed',condition='$result IS TRUE')]
 
+    def th_options(self):
+        return dict(partitioned=True)
+
 #Definizione di una classe View alternativa utilizzata in th_donator
 class ViewEdit(BaseComponent):
 

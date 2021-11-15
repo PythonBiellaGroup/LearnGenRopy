@@ -2,7 +2,8 @@
 
 class Table(object):
     def config_db(self,pkg):
-        tbl =  pkg.table('donator',pkey='id',name_long='!![en]Donator',name_plural='!![en]Donators',caption_field='fullname')
+        tbl =  pkg.table('donator',pkey='id',name_long='!![en]Donator',name_plural='!![en]Donators',caption_field='fullname',
+                            partition_dep='department_id')
         self.sysFields(tbl)
 
         tbl.column('registration_num', size='6',name_long='Registration number', name_short='Reg.num.')
@@ -12,7 +13,8 @@ class Table(object):
                     ).relation('donor.card.id', mode='foreignkey', onDelete='raise', one_one='*') 
         tbl.column('blood_group_code',size=':3',name_long='!![en]Blood Group', validate_notnull=True).relation(
                     'donator_blood_group.code',relation_name='donators', mode='foreignkey', onDelete='raise')
-        tbl.column('department_id',size='22',name_long='!![en]Department').relation('department.id',relation_name='donators', mode='foreignkey', onDelete='raise')
+        tbl.column('department_id',size='22',name_long='!![en]Department').relation(
+                    'department.id',relation_name='donators', mode='foreignkey', onDelete='raise')
         tbl.column('job',name_long='Job')
         tbl.column('journal_request',dtype='B',name_long='!![en]Journal request')
         tbl.column('news_request',dtype='B',name_long='!![en]News request')

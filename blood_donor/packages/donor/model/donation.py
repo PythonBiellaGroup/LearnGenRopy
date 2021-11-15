@@ -3,7 +3,8 @@
 class Table(object):
     def config_db(self,pkg):
         tbl =  pkg.table('donation',pkey='id',name_long='!![en]Donation',
-                                    name_plural='!![en]Donations',caption_field='reference_num')
+                                    name_plural='!![en]Donations',caption_field='reference_num',
+                                    partition_per_dep='department_id')
         self.sysFields(tbl)
         tbl.column('reference_num',name_long='!![en]Reference number')
         tbl.column('donator_id',size='22',name_long='!![en]Donator').relation(
@@ -11,6 +12,8 @@ class Table(object):
         tbl.column('date',dtype='D',name_long='!![en]Date')
         tbl.column('result',dtype='B',name_long='!![en]Result')
         tbl.column('notes',name_long='!![en]Notes')
+
+        tbl.aliasColumn('department_id', "@donator_id.department_id", name_long='!![en]Department', static=True)
 
     def defaultValues(self):
         return dict(date = self.db.workdate)
