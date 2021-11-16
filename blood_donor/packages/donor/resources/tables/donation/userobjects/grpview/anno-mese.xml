@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<GenRoBag><_ins_ts _tag="__ins_ts" _T="DH" dtype="DH" name_long="!![en]Insert date" indexed="True::B" group="zzz" onInserting="setTSNow" _sysfield="True::B" as="t0___ins_ts">2021-11-15T12:51:13.037822+01:00</_ins_ts>
+<_del_ts _tag="__del_ts" _T="NN" dtype="DH" name_long="!![en]Logical delete date" indexed="True::B" group="zzz" _sysfield="True::B" as="t0___del_ts"></_del_ts>
+<_mod_ts _tag="__mod_ts" _T="DH" dtype="DH" name_long="!![en]Update date" indexed="True::B" group="zzz" onInserting="setTSNow" onUpdating="setTSNow" _sysfield="True::B" print_width="26::L" as="t0___mod_ts">2021-11-15T12:51:13.037849+01:00</_mod_ts>
+<_ins_user _tag="__ins_user" name_long="!![en]User Insert" group="zzz" onInserting="setCurrentUser" _sysfield="True::B" dtype="T" as="t0___ins_user">admin</_ins_user>
+<identifier size=":120" unique="True::B" indexed="True::B" sql_value="COALESCE(:tbl,:pkg,'')||:objtype||:code|| CASE WHEN :private THEN :userid ELSE '' END" dtype="A" as="t0_identifier">donor.donationgrpviewanno-mese</identifier>
+<code size=":40" name_long="!![en]Code" indexed="y" dtype="A" print_width="30::L" as="t0_code">anno-mese</code>
+<objtype size=":20" name_long="!![en]Object Type" indexed="y" dtype="A" print_width="15::L" as="t0_objtype">grpview</objtype>
+<pkg size=":50" name_long="!![en]Package" dtype="A" print_width="30::L" as="t0_pkg">donor</pkg>
+<tbl size=":50" name_long="!![en]Table" dtype="A" print_width="30::L" as="t0_tbl">donor.donation</tbl>
+<userid size=":50" name_long="!![en]User ID" indexed="y" dtype="A" print_width="30::L" as="t0_userid">admin</userid>
+<description size=":50" name_long="!![en]Description" indexed="y" dtype="A" print_width="30::L" as="t0_description">Anno mese</description>
+<notes _T="NN" dtype="T" name_long="!![en]Notes" as="t0_notes"></notes>
+<data dtype="X" name_long="!![en]Data" print_width="12::L" as="t0_data"><view_0 tag="view"><rows_0 tag="rows"><cellx_g49cv909qp _T="NN" width="8em" name="Anno" dtype="D" field="date" tag="cell" formulaVariant="::NN" group_aggr="YYYY" group_nobreak="::NN" format_pattern="::NN"></cellx_g49cv909qp>
+<cellx_g49cvff7s9 _T="NN" width="8em" name="Mese" dtype="D" field="date" tag="cell" formulaVariant="::NN" group_aggr="TMMonth" group_nobreak="::NN" format_pattern="::NN"></cellx_g49cvff7s9>
+<_grp_count field="_grp_count" name="Cnt" width="5em" dtype="L" group_aggr="sum" tag="cell"></_grp_count></rows_0></view_0></data>
+<authtags _T="NN" dtype="T" name_long="!![en]Auth tags" print_width="20::L" as="t0_authtags"></authtags>
+<private _T="B" dtype="B" name_long="!![en]Private" print_width="11::L" as="t0_private">False</private>
+<quicklist _T="NN" dtype="B" name_long="!![en]Quicklist" as="t0_quicklist"></quicklist>
+<flags dtype="T" name_long="!![en]Flags" print_width="20::L" as="t0_flags">thpage_donor_donation_V_donor_donation_grouper_grid</flags>
+<required_pkg _T="NN" name_long="!![en]Required pkg" dtype="T" print_width="20::L" as="t0_required_pkg"></required_pkg>
+<preview _T="NN" name_long="!![en][it]Preview" dtype="T" as="t0_preview"></preview></GenRoBag>

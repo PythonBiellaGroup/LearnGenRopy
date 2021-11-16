@@ -8,7 +8,7 @@ Per l'installazione di Genropy si faccia riferimento a questa guida: https://www
 
 Una volta clonato il progetto, eseguire in una finestra di terminale lo script ``gnrdbsetup bd_test`` per generare database, tables e colonne partendo dal model.
 
-Eseguendo la **gnrdbsetup** con l'attributo ``-u`` è possibile generare anche i *sysRecord*, ovvero i record di sistema predefiniti (si veda in proposito la tabella ``donor.donator_blood_group``).
+Eseguendo la **gnrdbsetup** con l'attributo ``-u`` è possibile generare anche i *sysRecord*, ovvero i record di sistema predefiniti (si veda in proposito la tabella ``donor.donator_blood_group``). Inoltre, in questo modo verranno anche importati gli *userobjects* (se disponibili), ovvero template, query e viste salvate (vedi template di stampa e groupedView lez.4 per esempio)
 
 È a questo punto possibile avviare il software: in una finestra di terminale lanciare il ``gnrdaemon`` e in una finestra separata avviare l'applicativo con lo script ``gnrwsgiserve bd_test``.
 
