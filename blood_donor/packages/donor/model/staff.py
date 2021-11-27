@@ -2,7 +2,8 @@
 
 class Table(object):
     def config_db(self,pkg):
-        tbl=pkg.table('staff', pkey='id', caption_field='username', name_long='!![en]Staff')
+        tbl=pkg.table('staff', pkey='id', caption_field='username', name_long='!![en]Staff',
+                      partition_department_id='department_id')
         self.sysFields(tbl)
 
         tbl.column('user_id',size='22', group='_', name_long='!![en]User'

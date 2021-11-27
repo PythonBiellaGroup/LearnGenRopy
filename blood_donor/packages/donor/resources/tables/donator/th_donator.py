@@ -46,6 +46,7 @@ class View(BaseComponent):
         top.slotToolbar('5,sections@active_donators,*,sections@blood_group_code,5',
                             childname='superiore',_position='<bar')
 
+    # Gestione muti-tenant
     def th_options(self):
         return dict(partitioned=True)    
 
@@ -62,7 +63,8 @@ class Form(BaseComponent):
                                         cols=1, border_spacing='4px')
         data_fb.field('user_id' )
         data_fb.field('blood_group_code')
-        data_fb.field('department_id')
+        # Commentato per multi-tenant
+        # data_fb.field('department_id')
         data_fb.field('job')
         data_fb.field('journal_request')
         data_fb.field('news_request' )

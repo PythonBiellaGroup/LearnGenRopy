@@ -14,8 +14,9 @@ class Table(object):
         tbl.column('notes',name_long='!![en]Notes')
 
     def partitioning_pkeys(self):
+        # Prendiamo gli id di tutti i dipartimenti per fare il partizionamento
         if self.db.currentEnv.get('current_department_id'):
             return [self.db.currentEnv['current_department_id']]
         else:
             return [r['id'] for r in self.query().fetch()]
-        #Prendiamo gli id di tutti i dipartimenti per fare il partizionamento
+        

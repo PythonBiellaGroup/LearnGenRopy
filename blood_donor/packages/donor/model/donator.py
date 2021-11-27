@@ -2,8 +2,8 @@
 
 class Table(object):
     def config_db(self,pkg):
-        tbl =  pkg.table('donator',pkey='id',name_long='!![en]Donator',name_plural='!![en]Donators',caption_field='fullname',
-                            partition_department_id='department_id')
+        tbl =  pkg.table('donator',pkey='id',name_long='!![en]Donator',name_plural='!![en]Donators',
+                         caption_field='fullname', partition_department_id='department_id')
         self.sysFields(tbl)
 
         tbl.column('registration_num', size='6',name_long='Registration number', name_short='Reg.num.')
@@ -43,5 +43,6 @@ class Table(object):
     def randomValues(self):
         return dict(registration_num=False)
 
+    # Per gestione multi-tenant
     def defaultValues(self):
         return dict(department_id=self.db.currentEnv.get('current_department_id'))
