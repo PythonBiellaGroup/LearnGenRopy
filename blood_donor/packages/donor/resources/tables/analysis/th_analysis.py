@@ -21,6 +21,11 @@ class View(BaseComponent):
     def th_query(self):
         return dict(column='id', op='contains', val='')
 
+    # Gestione muti-tenant
+    def th_options(self):
+        return dict(partitioned=True)
+
+
 
 
 class Form(BaseComponent):

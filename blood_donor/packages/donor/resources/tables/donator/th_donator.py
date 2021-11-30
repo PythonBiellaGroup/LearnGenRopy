@@ -71,7 +71,7 @@ class Form(BaseComponent):
         data_fb.field('notes')
 
         tc = bc.tabContainer(region='center')
-        tc.contentPane(title='Donations').inlineTableHandler(relation='@donations', viewResource='ViewEdit')
+        tc.contentPane(title='Donations').dialogTableHandler(relation='@donations', viewResource='ViewEdit')
         tc.contentPane(title='Analysis').dialogTableHandler(relation='@analysis', formResource='FormFromDonator')
         self.donatorAttachments(tc.contentPane(title='Attachments'))
 

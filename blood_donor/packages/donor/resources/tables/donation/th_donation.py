@@ -34,6 +34,7 @@ class View(BaseComponent):
         return [dict(code='all',caption='All'),
                 dict(code='completed',caption='Completed',condition='$result IS TRUE')]
 
+    # Gestione muti-tenant
     def th_options(self):
         return dict(partitioned=True)
 
@@ -60,4 +61,4 @@ class Form(BaseComponent):
 
 
     def th_options(self):
-        return dict(dialog_height='400px', dialog_width='600px' )
+        return dict(dialog_height='400px', dialog_width='600px', modal=True )
