@@ -5,11 +5,19 @@ from gnr.web.gnrbaseclasses import BaseComponent
 #Creando un component possiamo richiamare un blocco di codice al bisogno
 class CardForm(BaseComponent):
     
-    def cardForm(self, pane):
-        bc = pane.borderContainer(datapath='.@card_id')
-        center = bc.contentPane(region='center')
+    def cardForm(self, pane, title=None, rel_name=None):
+        '''
+        Aggiunti parametri per gestire l'univocità del soggetto (card)
+        che può essere sia donatore che membro dello staff
+        '''
+        # Evoluzioni Donor #1
+        # bc = pane.borderContainer(datapath='.@card_id')
+        rgf = pane.roundedGroupFrame(datapath='.@card_id', title=title)
+        rgf.top.linkerBar(field="card_id", newRecordOnly=True, openIfEmpty=True,
+                          condition=f"@{rel_name}.id IS NULL")
         #Passando la table al formbuilder, possiamo sfruttare la "magia" del field
-        fb = center.formbuilder(cols=2, border_spacing='4px', table='donor.card')
+        bce = rgf.center.borderContainer()
+        fb = bce.contentPane(region="center").formbuilder(cols=2, border_spacing='4px', table='donor.card')
         fb.field('name')
         fb.field('surname')
         fb.field('birthplace_id')
@@ -21,6 +29,6 @@ class CardForm(BaseComponent):
         fb.field('city_id')
         fb.field('fiscal_code')
 
-        right = bc.contentPane(region='right', width='100px', margin='10px')
+        right = bce.contentPane(region='right', width='100px', margin='10px')
         right.img(src='^.profile_photo', edit=True, crop_width='100px', crop_height='100px', 
                         placeholder=True, upload_folder='site:avatar', upload_filename='=.id')

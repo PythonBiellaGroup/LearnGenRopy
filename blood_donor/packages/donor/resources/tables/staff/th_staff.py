@@ -27,16 +27,23 @@ class Form(BaseComponent):
     def th_form(self, form):
         bc = form.center.borderContainer()
         top = bc.borderContainer(region='top', height='50%', datapath='.record')
-        card_pane = top.roundedGroupFrame(region='left', width='70%', title='Staff Card')
-        self.cardForm(card_pane)
-
-        center = top.roundedGroupFrame(region='center', title='Staff Data')
-        fb = center.formbuilder(cols=1)
-        fb.field('user_id')
+        card_pane = top.contentPane(region='left', width='70%')
+        # Evoluzioni Donor #1
+        self.cardForm(card_pane, title="Staff Card", rel_name="staff")
+        # center = top.roundedGroupFrame(region='center', title='Staff Data')
+        center = top.borderContainer(region='center')
+        center.contentPane(region='top', height='90px').linkerBox('user_id', openIfEmpty=True,
+                           dialog_height='400px',
+                           dialog_width='650px', formResource='Form', label='User info',
+                           default_firstname="=#FORM.record.@card_id.name",
+                           default_lastname="=#FORM.record.@card_id.surname",
+                           default_email="=#FORM.record.@card_id.email"
+                           )
+        fb = center.contentPane(region='center').formbuilder(cols=1)
         fb.field('department_id')
         fb.field('is_active')
 
-        bc.contentPane(region='center').div('Ci deve essere sempre!')
+        bc.contentPane(region='center')
 
 
     def th_options(self):

@@ -55,9 +55,13 @@ class Form(BaseComponent):
 
     def th_form(self, form):
         bc = form.center.borderContainer()
+        # Parte superioore della form
         top = bc.borderContainer(region='top', height='40%', splitter=True, datapath='.record')
-        card_pane = top.roundedGroupFrame(region='left', width='70%', title='Donor Card')
-        self.cardForm(card_pane)
+        #card_pane = top.roundedGroupFrame(region='left', width='70%', title='Donor Card')
+        card_pane = top.roundedGroupFrame(region='left', width='70%')
+        # Evoluzioni Donor #1
+        #self.cardForm(card_pane)
+        self.cardForm(card_pane, title="Donator Card", rel_name="donator")
 
         data_fb = top.roundedGroupFrame(region='center', title='Donor Data').formbuilder(
                                         cols=1, border_spacing='4px')
@@ -69,7 +73,7 @@ class Form(BaseComponent):
         data_fb.field('journal_request')
         data_fb.field('news_request' )
         data_fb.field('notes')
-
+        # Parte inferiore della form
         tc = bc.tabContainer(region='center')
         tc.contentPane(title='Donations').dialogTableHandler(relation='@donations', viewResource='ViewEdit')
         tc.contentPane(title='Analysis').dialogTableHandler(relation='@analysis', formResource='FormFromDonator')

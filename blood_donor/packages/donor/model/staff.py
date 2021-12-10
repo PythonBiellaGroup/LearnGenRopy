@@ -7,11 +7,11 @@ class Table(object):
         self.sysFields(tbl)
 
         tbl.column('user_id',size='22', group='_', name_long='!![en]User'
-                    ).relation('adm.user.id', relation_name='staff', mode='foreignkey', onDelete='raise')
+                    ).relation('adm.user.id', one_one='*', mode='foreignkey', onDelete='raise')
         tbl.column('department_id', size='22', name_long='!![en]Department').relation('donor.department.id',
                         relation_name='user', mode='foreignkey', onDelete='raise')    
         tbl.column('card_id',size='22', group='_', name_long='!![en]Card'
-                    ).relation('donor.card.id', relation_name='staff', mode='foreignkey', onDelete='raise')
+                    ).relation('donor.card.id', one_one='*', mode='foreignkey', onDelete='raise')
         tbl.column('is_active', dtype='B', name_long='!![en]Is active')    
 
         tbl.aliasColumn('username', '@user_id.username', name_long='!![en]Username')
