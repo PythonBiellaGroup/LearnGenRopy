@@ -27,9 +27,6 @@ class View(BaseComponent):
     def th_order(self):
         return 'fullname'
 
-    #def th_query(self):
-    #    return dict(column='fullname', op='contains', val='')
-
     def th_queryBySample(self):
         return dict(fields=[dict(field='fullname', lbl='!![en]Name/Surname', width='15em'),
                             dict(field='id', lbl='!![en]Reg.num.', tag='dbSelect', 
@@ -55,24 +52,32 @@ class Form(BaseComponent):
 
     def th_form(self, form):
         bc = form.center.borderContainer()
-        # Parte superioore della form
+        
+        # Parte superiore della form
         top = bc.borderContainer(region='top', height='40%', splitter=True, datapath='.record')
-        #card_pane = top.roundedGroupFrame(region='left', width='70%', title='Donor Card')
+        
+        # Parte sinistra del top: dati Card
         card_pane = top.roundedGroupFrame(region='left', width='70%')
-        # Evoluzioni Donor #1
-        #self.cardForm(card_pane)
         self.cardForm(card_pane, title="Donator Card", rel_name="donator")
 
-        data_fb = top.roundedGroupFrame(region='center', title='Donor Data').formbuilder(
-                                        cols=1, border_spacing='4px')
-        data_fb.field('user_id' )
-        data_fb.field('blood_group_code')
-        # Commentato per multi-tenant
-        # data_fb.field('department_id')
-        data_fb.field('job')
-        data_fb.field('journal_request')
-        data_fb.field('news_request' )
-        data_fb.field('notes')
+        # Parte destra (center) del top: dati Card
+        center = top.borderContainer(region='center')
+        # Per user_id -> linkerBox
+        center.contentPane(region='top', height='90px').linkerBox('user_id', openIfEmpty=True,
+                           dialog_height='400px',
+                           dialog_width='650px', formResource='Form', label='User info',
+                           default_firstname="=#FORM.record.@card_id.name",
+                           default_lastname="=#FORM.record.@card_id.surname",
+                           default_email="=#FORM.record.@card_id.email"
+                           )
+        fb = center.contentPane(region='center').formbuilder(cols=1)
+        # department_id non inserito per la gestione multi-tenant        
+        fb.field('blood_group_code')
+        fb.field('job')
+        fb.field('journal_request')
+        fb.field('news_request' )
+        fb.field('notes')
+
         # Parte inferiore della form
         tc = bc.tabContainer(region='center')
         tc.contentPane(title='Donations').dialogTableHandler(relation='@donations', viewResource='ViewEdit')

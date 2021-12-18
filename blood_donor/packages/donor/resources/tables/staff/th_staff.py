@@ -26,11 +26,15 @@ class Form(BaseComponent):
     
     def th_form(self, form):
         bc = form.center.borderContainer()
+        
+        # Parte superiore della form
         top = bc.borderContainer(region='top', height='50%', datapath='.record')
+
+        # Parte sinistra del top: dati Card
         card_pane = top.contentPane(region='left', width='70%')
-        # Evoluzioni Donor #1
         self.cardForm(card_pane, title="Staff Card", rel_name="staff")
-        # center = top.roundedGroupFrame(region='center', title='Staff Data')
+
+        # Parte destra (center) del top: dati Utente / Staff
         center = top.borderContainer(region='center')
         center.contentPane(region='top', height='90px').linkerBox('user_id', openIfEmpty=True,
                            dialog_height='400px',
