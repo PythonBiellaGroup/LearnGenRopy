@@ -41,7 +41,9 @@ class Form(BaseComponent):
                            dialog_width='650px', formResource='Form', label='User info',
                            default_firstname="=#FORM.record.@card_id.name",
                            default_lastname="=#FORM.record.@card_id.surname",
-                           default_email="=#FORM.record.@card_id.email"
+                           default_email="=#FORM.record.@card_id.email",
+                           default_status="conf",
+                           default_group_code="S"
                            )
         fb = center.contentPane(region='center').formbuilder(cols=1)
         fb.field('department_id')

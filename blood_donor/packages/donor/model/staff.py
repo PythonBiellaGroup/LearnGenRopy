@@ -15,3 +15,7 @@ class Table(object):
         tbl.column('is_active', dtype='B', name_long='!![en]Is active')    
 
         tbl.aliasColumn('username', '@user_id.username', name_long='!![en]Username')
+
+    # Valorizzazione predefinita department_id per i ruoli che non possono modificarlo
+    def defaultValues(self):
+        return dict(department_id=self.db.currentEnv.get('current_department_id'))
