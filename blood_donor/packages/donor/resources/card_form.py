@@ -12,11 +12,12 @@ class CardForm(BaseComponent):
         '''
         # Evoluzioni Donor #1
         # bc = pane.borderContainer(datapath='.@card_id')
-        rgf = pane.roundedGroupFrame(datapath='.@card_id', title=title)
-        rgf.top.linkerBar(field="card_id", newRecordOnly=True, openIfEmpty=True,
-                          condition=f"@{rel_name}.id IS NULL")
+        rgf = pane.roundedGroupFrame(title=title)
+        rgf.top.linkerBar(field="card_id", newRecordOnly=False, openIfEmpty=True,
+                          condition=f"@{rel_name}.id IS NULL OR @{rel_name}.id=:rec_id", 
+                          condition_rec_id='^#FORM.record.id')
         #Passando la table al formbuilder, possiamo sfruttare la "magia" del field
-        bce = rgf.center.borderContainer()
+        bce = rgf.center.borderContainer(datapath='.@card_id')
         fb = bce.contentPane(region="center").formbuilder(cols=2, border_spacing='4px', table='donor.card')
         fb.field('name')
         fb.field('surname')
