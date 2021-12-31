@@ -8,11 +8,11 @@ from gnr.core.gnrdecorator import metadata
 class Table(object):
     @metadata(mandatory=True)
     def sysRecord_AN(self):
-        return self.newrecord(code='AN',description='Ammistratore Nazionale',
+        return self.newrecord(code='AN',description='Amministratore Nazionale',
                               hierarchical_code='AN')
 
     def sysRecord_AL(self):
-        return self.newrecord(code='AL',description='Ammistratore Locale',
+        return self.newrecord(code='AL',description='Amministratore Locale',
                               hierarchical_code='AL')
 
     def sysRecord_S(self):
@@ -21,4 +21,4 @@ class Table(object):
 
     def sysRecord_D(self):
         return self.newrecord(code='D',description='Donatore',
-                              hierarchical_code='D')
+                              hierarchical_code='D', rootpage='/donor/donator_page')

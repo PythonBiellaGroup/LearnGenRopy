@@ -91,3 +91,9 @@ class Form(BaseComponent):
 
     def th_options(self):
         return dict(dialog_height='400px', dialog_width='600px' )
+
+class FormPaginaDonator(BaseComponent):        
+    '''
+    Disporre la pagina per il donatore
+    '''
+    pass

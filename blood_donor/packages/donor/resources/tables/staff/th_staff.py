@@ -19,6 +19,9 @@ class View(BaseComponent):
     def th_query(self):
         return dict(column='@card_id.fullname', op='contains', val='')
 
+    # Per dialog box
+    def th_options(self):
+        return dict(widget='dialog')   
 
 
 class Form(BaseComponent):
@@ -53,4 +56,4 @@ class Form(BaseComponent):
 
 
     def th_options(self):
-        return dict(dialog_height='400px', dialog_width='600px')
+        return dict(dialog_windowRatio=.8, modal=True)

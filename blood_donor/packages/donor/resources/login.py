@@ -13,4 +13,7 @@ class LoginComponent(BaseComponent):
         # Lettura department_id dell'utente e settaggio nelle variabili di sessione (rootenv)
         department_id = self.db.table('donor.staff').readColumns(where='$user_id=:u_id', 
                             u_id=avatar.user_id, columns='$department_id')
-        rootenv['current_department_id'] = department_id 
+        donator_id = self.db.table('donor.donator').readColumns(where='$user_id=:u_id',
+                            u_id=avatar.user_id, columns='$id')
+        rootenv['current_department_id'] = department_id
+        rootenv['current_donator_id'] = donator_id
